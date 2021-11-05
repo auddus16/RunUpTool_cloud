@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paas.runup.dao.MsgRoomDAO">
+
+	<select id="selectRoomId" parameterType="int" resultType="com.paas.runup.dto.MsgRoom">
+		SELECT * FROM MSGROOM WHERE ROOMID=#{roomId}
+	</select>
+
+	<insert id="insertMsgRoom"
+		parameterType="com.paas.runup.dto.MsgRoom">
+		INSERT INTO MSGROOM VALUES (#{roomId})
+	</insert>
+
+	<delete id="deleteMsgRoom" parameterType="String">
+		DELETE FROM MSGROOM WHERE ROOMID = #{roomId}
+	</delete>
+
+
+
+</mapper>

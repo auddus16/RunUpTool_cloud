@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paas.runup.dao.RegisterDAO">
+  		
+  <select id="selRegisterAllByStudent" parameterType="int" resultType="com.paas.runup.dto.RegisterDTO"> 
+  	SELECT * FROM REGISTER WHERE S_NO = #{s_no}
+  </select>
+  
+  <select id="selRegisterAllByClass" parameterType="int" resultType="com.paas.runup.dto.RegisterDTO"> 
+  	SELECT * FROM REGISTER WHERE C_NO = #{c_no}
+  </select>
+  
+  <insert id="insertRegister" parameterType="com.paas.runup.dto.RegisterDTO">
+  	INSERT INTO REGISTER (C_NO, S_NO) VALUES (#{c_no}, #{s_no})
+  </insert>
+  
+  <delete id="deleteRegister" parameterType="com.paas.runup.dto.RegisterDTO">
+  	DELETE FROM REGISTER WHERE S_NO = #{s_no} AND C_NO = #{c_no}
+  </delete>
+  
+  <delete id="delRegisterByClass" parameterType="int">
+  	DELETE FROM REGISTER WHERE C_NO = #{c_no}
+  </delete>
+  
+
+</mapper>

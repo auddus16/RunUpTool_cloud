@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paas.runup.dao.UserDAO"><!--namespace를 통해 DAO와 연결합니다. -->
+  	
+  	<select id="findByEmail" parameterType="String" resultType="com.paas.runup.dto.UserDTO">
+  		SELECT S_NO AS USER_NO, S_NAME AS USER_NAME, S_EMAIL AS USER_EMAIL, 
+  			S_PASSWORD AS USER_PASSWORD, S_ID AS USER_ID FROM STUDENT WHERE S_EMAIL= #{email}
+	UNION ALL 
+		SELECT T_NO AS USER_NO, T_NAME AS USER_NAME, T_EMAIL AS USER_EMAIL, 
+			T_PASSWORD AS USER_PASSWORD, T_ID AS USER_ID FROM TEACHER WHERE T_EMAIL= #{email}
+    </select>
+  		
+</mapper>

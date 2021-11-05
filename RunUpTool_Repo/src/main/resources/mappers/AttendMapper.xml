@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paas.runup.dao.AttendDAO">	
+	  
+  <select id="selectAttendByDate" parameterType="hashMap" resultType="com.paas.runup.dto.AttendDTO"> 
+  	SELECT A_NO, ATTEND.S_NO, C_NO, A_STATE, A_TIME, S_NAME FROM ATTEND LEFT OUTER JOIN STUDENT ON ATTEND.S_NO = STUDENT.S_NO
+  	<![CDATA[
+  	WHERE A_STARTTIME >= DATE_FORMAT(STR_TO_DATE(#{day}, '%Y%m%d'), '%Y-%m-%d') 
+  	AND A_STARTTIME < DATE_ADD(DATE_FORMAT(STR_TO_DATE(#{day}, '%Y%m%d'), '%Y-%m-%d'), INTERVAL 1 DAY) AND C_NO = #{c_no}
+  	]]>
+  </select>
+  
+  <select id="selectAttend" parameterType="int" resultType="com.paas.runup.dto.AttendDTO"> 
+  	SELECT * FROM ATTEND WHERE DATE_FORMAT(A_STARTTIME, "%Y-%m-%d") = CURDATE() AND S_NO = #{s_no} AND C_NO = #{c_no}
+  </select>
+  
+  <select id="selectAttendList" parameterType="int" resultType="com.paas.runup.dto.AttendDTO"> 
+  	SELECT * FROM ATTEND WHERE S_NO = #{s_no} AND C_NO = #{c_no}
+  </select>
+  
+  <insert id="insertAttend" parameterType="int">
+  	INSERT INTO ATTEND (S_NO, C_NO) VALUES (#{s_no}, #{c_no})
+  </insert>
+  
+  <delete id="deleteAttend" parameterType="int">
+  	DELETE FROM ATTEND WHERE A_NO = #{a_no}
+  </delete>
+  
+  <update id="updateAttend" parameterType="com.paas.runup.dto.AttendDTO">
+  	UPDATE ATTEND SET A_STATE = #{a_state}, A_TIME = #{a_time} WHERE A_NO = #{a_no}
+  </update>
+  
+  <update id="updateAttendState" parameterType="com.paas.runup.dto.AttendDTO">
+  	UPDATE ATTEND SET A_STATE = #{a_state} WHERE A_NO = #{a_no}
+  </update>
+  
+
+</mapper>

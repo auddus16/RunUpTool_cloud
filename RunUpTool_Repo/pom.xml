@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.8.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>RunUpTool_Repo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>RunUpTool_Repo</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+	</properties>
+	<dependencies>
+	
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-resources-plugin</artifactId>
+			<version>2.4.3</version>
+		</dependency>
+	<!-- 이메일 인증&초대 START-->
+		<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+
+	<!-- 이메일 인증&초대 END-->
+	
+	<!-- swagger START -->
+	<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-swagger2</artifactId>
+	<version>3.0.0</version>
+</dependency>
+<dependency>
+   <groupId>io.springfox</groupId>
+   <artifactId>springfox-swagger-ui</artifactId>
+   <version>3.0.0</version>
+</dependency>
+<dependency>
+	<groupId>io.springfox</groupId>
+	<artifactId>springfox-boot-starter</artifactId>
+	<version>3.0.0</version>
+</dependency>
+	 <!-- swagger END -->
+	 <!-- Security START -->
+	 <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+       <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency> 
+	 <!-- Security END -->
+	 <!-- JWT START --> 
+   <dependency> 
+      <groupId>io.jsonwebtoken</groupId> 
+      <artifactId>jjwt</artifactId> 
+      <version>0.9.1</version> 
+   </dependency>
+   <!-- JWT END --> 
+	
+	<!-- mysql, mybatis START-->
+	<!-- mariadb-->
+	<dependency>
+    	<groupId>org.mariadb.jdbc</groupId>
+    	<artifactId>mariadb-java-client</artifactId>
+    	</dependency>
+    	
+		<dependency>
+		<groupId>org.mybatis.spring.boot</groupId>
+		<artifactId>mybatis-spring-boot-starter</artifactId>
+		<version>2.0.1</version>
+	</dependency>
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+	</dependency>	
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<optional>true</optional>
+	</dependency>
+	
+	<!-- DB Logback --> 
+	<dependency> 
+		<groupId>org.bgee.log4jdbc-log4j2</groupId> 
+		<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId> 
+		<version>1.16</version> 
+	</dependency>
+
+	<!-- mysql, mybatis END -->
+	
+	<!-- jstl -->
+	
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	</dependency>
+	
+	<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+	<!-- jstl -->
+	
+	<!-- thymeleaf -->
+	<dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+	<!-- thymeleaf -->
+	<!-- ddd -->
+		<dependency>
+    <groupId>javax.annotation</groupId>
+    <artifactId>javax.annotation-api</artifactId>
+    </dependency>
+	<!-- ddd -->
+	
+	<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            </dependency>
+	
+	<!-- Tomcat START 
+	<dependency> 
+		<groupId>org.apache.tomcat.embed</groupId> 
+		<artifactId>tomcat-embed-jasper</artifactId>
+		<scope>provided</scope> 
+	</dependency>
+	Tomcat END -->
+	
+	<!-- 깃헙 자바에서 가져온거 START-->
+	
+	<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-server -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-config-server</artifactId>
+    <version>2.2.5.RELEASE</version>
+</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.cloudfoundry/cloudfoundry-client -->
+<dependency>
+    <groupId>org.cloudfoundry</groupId>
+    <artifactId>cloudfoundry-client</artifactId>
+    <version>3.3.0.RELEASE</version>
+</dependency>
+	
+	
+	<dependency>
+  			<groupId>org.springframework.cloud</groupId>
+  			<artifactId>spring-cloud-starter-config</artifactId>
+  			<version>2.1.2.RELEASE</version>
+  		</dependency>
+	
+	<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-web</artifactId>
+  		</dependency>
+  		<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-data-jpa</artifactId>
+  		</dependency>
+
+  		<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-configuration-processor</artifactId>
+  			<optional>true</optional>
+  		</dependency>
+  		
+	<!-- 깃헙 자바에서 가져온거 END -->
+	
+	<!-- Spring Cloud Connector Start -->
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-spring-service-connector</artifactId>
+		<version>1.2.4.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-core</artifactId>
+		<version>1.2.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+		<version>1.2.4.RELEASE</version>
+	</dependency>
+	
+	<!-- GlusterFS Start -->
+		<dependency>
+			<groupId>org.javaswift</groupId>
+			<artifactId>joss</artifactId>
+			<version>0.9.8</version>
+		</dependency>
+		<!-- GlusterFS End -->
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+			</dependency>
+				
+	<!-- Spring Cloud Connector End -->
+	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+	
+
+</project>

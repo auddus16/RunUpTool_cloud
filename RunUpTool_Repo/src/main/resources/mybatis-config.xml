@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="com.paas.runup.dto"/>
+    </typeAliases>
+    <mappers>
+        <mapper resource="mappers/StudentMapper.xml"/>
+        <mapper resource="mappers/AttendMapper.xml"/>
+        <mapper resource="mappers/ClassMapper.xml"/>
+        <mapper resource="mappers/MsgRoomMapper.xml"/>
+        <mapper resource="mappers/QuizMapper.xml"/>
+        <mapper resource="mappers/QuizCheckMapper.xml"/>
+        <mapper resource="mappers/RegisterMapper.xml"/>
+        <mapper resource="mappers/TeacherMapper.xml"/>
+        <mapper resource="mappers/UserMapper.xml"/>
+    </mappers>
+</configuration>

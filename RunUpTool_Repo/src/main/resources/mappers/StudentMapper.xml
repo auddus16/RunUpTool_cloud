@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paas.runup.dao.StudentDAO"><!--namespace를 통해 DAO와 연결합니다. -->
+
+	<select id="selectStudent" parameterType="int" resultType="com.paas.runup.dto.StudentDTO">
+		SELECT * FROM STUDENT
+		WHERE s_no=#{s_no}
+	</select>
+
+	<insert id="insertStudent" parameterType="com.paas.runup.dto.StudentDTO">
+		INSERT INTO STUDENT(s_id,s_name,s_birth,s_gender,s_school,s_grade,s_class,s_password,s_email)
+		VALUES (#{s_id},#{s_name},#{s_birth},#{s_gender},#{s_school},#{s_grade},#{s_class},#{s_password},#{s_email})
+	</insert>
+
+	<update id="updateStudent" parameterType="com.paas.runup.dto.StudentDTO">
+		UPDATE STUDENT
+		SET s_id=#{s_id}, s_name=#{s_name}, s_birth=#{s_birth}, s_gender=#{s_gender},
+		s_school=#{s_school}, s_grade=#{s_grade}, s_class=#{s_class}, s_email=#{s_email}
+		WHERE s_no = #{s_no}
+	</update>
+
+	<delete id="deleteStudent" parameterType="int">
+		DELETE FROM STUDENT
+		WHERE s_no = #{s_no}
+	</delete>
+
+	<select id="getStudentByIDPW" resultType="com.paas.runup.dto.StudentDTO">
+		SELECT * FROM STUDENT
+		WHERE s_id = #{s_id} AND s_password = #{s_password}
+	</select>
+
+	<select id="searchStudentID" resultType="String">
+		SELECT s_id FROM STUDENT
+		WHERE s_name = #{s_name} AND s_email = #{s_email}
+	</select>
+
+	<select id="searchStudentPW" resultType="com.paas.runup.dto.StudentDTO">
+		SELECT * FROM STUDENT
+		WHERE s_name = #{s_name} AND s_id=#{s_id} AND s_email=#{s_email}
+	</select>
+	
+	<select id="selectStudentByEmail" parameterType="String" resultType="com.paas.runup.dto.StudentDTO">
+		SELECT * FROM STUDENT
+		WHERE s_email=#{s_email}
+	</select>
+
+	<select id="updateStudentPW" parameterType="String">
+		UPDATE STUDENT
+		SET s_password =# {s_password}
+		WHERE s_no = #{s_no}
+	</select>
+
+</mapper>

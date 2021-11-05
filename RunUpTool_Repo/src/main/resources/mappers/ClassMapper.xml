@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paas.runup.dao.ClassDAO">
+  		
+  <select id="selectClassByTeacher" parameterType="int" resultType="com.paas.runup.dto.ClassDTO"> 
+  	SELECT * FROM CLASS WHERE T_NO = #{t_no}
+  </select>
+  
+  <select id="selectClassByClass" parameterType="int" resultType="com.paas.runup.dto.ClassDTO"> 
+  	SELECT * FROM CLASS WHERE C_NO = #{c_no}
+  </select>
+  
+  <insert id="insertClass" parameterType="com.paas.runup.dto.ClassDTO">
+  	INSERT INTO CLASS (C_NAME, C_TIME, C_STUNUM, T_NO) VALUES (#{c_name}, #{c_time}, #{c_stunum}, #{t_no})
+  </insert>
+  
+  <update id="updateClass" parameterType="com.paas.runup.dto.ClassDTO">
+  	UPDATE CLASS SET C_NAME = #{c_name}, C_TIME = #{c_time} WHERE C_NO = #{c_no}
+  </update>
+  
+  <update id="addStudent" parameterType="int">
+  	UPDATE CLASS SET C_STUNUM = C_STUNUM + 1 WHERE C_NO = #{c_no}
+  </update>
+  
+  <update id="subStudent" parameterType="int">
+  	UPDATE CLASS SET C_STUNUM = C_STUNUM - 1 WHERE C_NO = #{c_no}
+  </update>
+  
+  <delete id="deleteClass" parameterType="int">
+  	DELETE FROM CLASS WHERE C_NO = #{c_no}
+  </delete>
+
+</mapper>

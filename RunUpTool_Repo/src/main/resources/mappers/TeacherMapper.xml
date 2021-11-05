@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paas.runup.dao.TeacherDAO"><!--namespace를 통해 DAO와 연결합니다. -->
+  
+  <insert id="insertTeacher">
+  	INSERT INTO TEACHER(t_no,t_id,t_name,t_birth,t_gender,t_school,t_password,t_email)
+  	VALUES (#{t_no},#{t_id},#{t_name},#{t_birth},#{t_gender},#{t_school},#{t_password},#{t_email})
+  </insert>
+  
+  <update id="updateTeacher">
+  	UPDATE TEACHER
+  	SET t_id=#{t_id},t_name=#{t_name},t_birth=#{t_birth},t_gender=#{t_gender}, t_school=#{t_school}, t_password=#{t_password}, t_email=#{t_email}
+  	WHERE t_no=#{t_no}
+  </update>
+  	
+  <delete id="deleteTeacher">
+        DELETE FROM TEACHER WHERE t_no = #{t_no}
+   </delete>
+
+	<select id="getTeacherByIDPW" resultType="com.paas.runup.dto.TeacherDTO"><!-- selectUsers()메서드를 호출하면 실행할 SELECT문이며, 
+						UserDTO 객체를 파라미터로 받아, UserDTO객체를 반환합니다.-->
+  	SELECT t_id, t_password 
+  	FROM TEACHER
+  	WHERE t_id = #{t_id} AND t_password=#{t_password}
+  	 </select>
+  	 
+  	 <select id="searchTeacherID" resultType="com.paas.runup.dto.TeacherDTO"><!-- selectUsers()메서드를 호출하면 실행할 SELECT문이며, 
+						UserDTO 객체를 파라미터로 받아, UserDTO객체를 반환합니다.-->
+  	SELECT * 
+  	FROM TEACHER
+  	WHERE t_name = #{t_name} AND t_email=#{t_email}
+  	
+  </select>
+  
+  <select id="searchTeacherPW" resultType="com.paas.runup.dto.TeacherDTO"><!-- selectUsers()메서드를 호출하면 실행할 SELECT문이며, 
+						UserDTO 객체를 파라미터로 받아, UserDTO객체를 반환합니다.-->
+  	SELECT * 
+  	FROM TEACHER
+  	WHERE t_name = #{t_name} AND t_id=#{t_id} AND t_email=#{t_email}
+  	
+  </select>
+  
+  <select id="selectTeacherByEmail" parameterType="String" resultType="com.paas.runup.dto.TeacherDTO">
+		SELECT * FROM TEACHER
+		WHERE t_email=#{t_email}
+	</select>
+  
+  <select id="updateTeacherPW" resultType="com.paas.runup.dto.TeacherDTO"><!-- selectUsers()메서드를 호출하면 실행할 SELECT문이며, 
+						UserDTO 객체를 파라미터로 받아, UserDTO객체를 반환합니다.-->
+  	UPDATE TEACHER
+  	SET t_password=#{t_password}
+  	WHERE t_no=#{t_no}
+  	
+  </select>
+</mapper>

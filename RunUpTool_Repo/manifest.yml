@@ -1,0 +1,18 @@
+---
+applications:
+- name: RunUpTool_cloud22
+  memory: 1024M
+  host: RunUpToolcloud22
+  domain: paas-ta.org
+  path: ./target/RunUpTool_cloud22.war
+  buildpack: java_buildpack
+  services:
+  - mysql
+  disk_quota: 1024M
+  instances: 1
+env:
+  mysql_datasource_driver-class-name: org.mariadb.jdbc.Driver
+  mysql_datasource_jdbc-url: jdbc:\${vcap.services.mysql.credentials.uri}
+  mysql_datasource_username: \${vcap.services.mysql.credentials.username}
+  mysql_datasource_password: \${vcap.services.mysql.credentials.password}
+  SPRING_PROFILES_ACTIVE: cloud

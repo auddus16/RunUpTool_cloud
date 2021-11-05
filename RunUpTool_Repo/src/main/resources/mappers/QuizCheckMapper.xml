@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.paas.runup.dao.QuizCheckDAO">
+	<select id="selectQuizCheckListByQuiz" parameterType="int" resultType="com.paas.runup.dto.QuizCheckDTO">
+  	SELECT * 
+  	FROM QUIZCHECK LEFT OUTER JOIN STUDENT
+  	ON QUIZCHECK.S_NO = STUDENT.S_NO
+  	WHERE q_no=#{q_no}
+  </select>
+  
+  <select id="selectQuizCheckListByStudent" parameterType="int" resultType="com.paas.runup.dto.QuizCheckDTO">
+  	SELECT *
+  	FROM QUIZCHECK LEFT OUTER JOIN QUIZ
+  	ON QUIZCHECK.Q_NO = QUIZ.Q_NO
+  	WHERE s_no=#{s_no}
+  </select>
+  
+  
+  <insert id="insertQuizCheck" parameterType="com.paas.runup.dto.QuizCheckDTO">
+  	INSERT INTO QUIZCHECK(q_no, s_no, qc_state, qc_ans)
+  	VALUES (#{q_no},#{s_no},#{qc_state},#{qc_ans})
+  </insert>
+
+	
+</mapper>
